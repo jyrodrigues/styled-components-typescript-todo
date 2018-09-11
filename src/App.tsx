@@ -1,19 +1,22 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, ThemeProvider } from 'styled-components';
 import logo from './logo.svg';
+import { theme } from './theme/globalStyle';
 
 class App extends React.Component {
   public render() {
     return (
-      <AppWrapper>
-        <AppHeader>
-          <AppLogo src={logo} alt="logo" />
-          <AppTitle>Welcome to React</AppTitle>
-        </AppHeader>
-        <AppIntro>
-          To get started, edit <CodeWrapper>src/App.tsx</CodeWrapper> and save to reload.
+      <ThemeProvider theme={theme}>
+        <AppWrapper>
+          <AppHeader>
+            <AppLogo src={logo} alt="logo" />
+            <AppTitle>Welcome to React</AppTitle>
+          </AppHeader>
+          <AppIntro>
+            To get started, edit <CodeWrapper>src/App.tsx</CodeWrapper> and save to reload.
         </AppIntro>
-      </AppWrapper>
+        </AppWrapper>
+      </ThemeProvider>
     );
   }
 }
@@ -23,14 +26,14 @@ class App extends React.Component {
 
 const AppWrapper = styled.div`
   text-align: center;
-`
+`;
 
 const AppHeader = styled.header`
-  background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
-`
+  color: ${props => props.theme.dark};
+  background-color: ${props => props.theme.primary};
+`;
 
 const rotate360 = keyframes`
   from {
@@ -39,7 +42,7 @@ const rotate360 = keyframes`
   to {
     transform: rotate(360deg)
   }
-`
+`;
 
 const AppLogo = styled.img`
   animation: ${rotate360} infinite 20s linear;
@@ -47,19 +50,20 @@ const AppLogo = styled.img`
   &:hover {
     animation: ${rotate360} infinite 1.5s linear;
   }
-`
+`;
 
 const AppTitle = styled.h1`
-  font-size: 1.5em
-`
+  font-size: 1.5em;
+  font-weight: 900;
+`;
 
 const CodeWrapper = styled.code`
   font-size: 1.3rem;
-`
+`;
 
 const AppIntro = styled.p`
   color: ${props => props.theme.dark};
   font-size: large;
-`
+`;
 
 export default App;
