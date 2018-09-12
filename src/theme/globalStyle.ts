@@ -15,8 +15,40 @@ injectGlobal`
     }
 `;
 
-export const theme = {
-    dark: '#222',
-    primary: '#6e27c5'
-}
+export type Theme = {
+	primary: string;
+	secondary: string;
+	danger: string;
+	light: string;
+	dark: string;
+	color: {
+		done: string;
+		tbd: string;
+	};
+};
+
+export const theme1: Theme = {
+	primary: '#ff0198',
+	secondary: '#01c1d6',
+	danger: '#eb238e',
+	light: '#f4f4f4',
+	dark: '#222',
+	color: {
+		done: '#aaa',
+		tbd: '#333'
+	}
+};
+
+export const theme2: Theme = {
+	primary: '#6e27c5',
+	secondary: '#ffb617',
+	danger: '#f16623',
+	light: '#f4f4f4',
+	dark: '#222',
+	color: {
+		done: '#aaa',
+		tbd: '#333'
+	}
+};
+
 /* tslint:enable */
